@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Graphic design, Portfolio" />
+    <meta
+      name="description"
+      content="Andrew Olajide's Graphic design portfolio"
+    />
+    <title>Andrew Olajide</title>
+    <!-- Favicon -->
+     <link rel="icon" type="image/x-icon" href="images/favicon.png">
+
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    /></noscript>
+  </head>
+
+  <body>
+    <!-- Nav Bar -->
+    <nav class="navbar">
+      <div class="nav-bar-row">
+        <div class="nav-left">
+    <img src="images/website logo.png" alt="Logo" class="nav-logo" />
+    <a href="index.html" class="nav-title">ANDREW OLAJIDE</a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#experience">EXPERIENCE</a>
+    <a href="index.html#education">EDUCATION</a>
+    <a href="index.html#skills">SKILLS</a>
+    <a href="mywork.html">MY WORK</a>
+  </div>
+</nav>
+
+
+
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="profile-pic">
+          <img src="images/profile.jpg" alt="Profile Picture"
+          class="profile-img" />
+        </div>
+        <div class="text">
+          <h1>ANDREW OLAJIDE</h1>
+          <h3>CREATIVE DESIGNER</h3>
+          <p>
+            <i class="fa-solid fa-phone"></i> +234 706 226 9761
+            <a href="mailto:doxahmedia@gmail.com">
+              <i class="fa-solid fa-envelope"></i>
+              <span>doxahmedia@gmail.com</span>
+            </a>
+          </p>
+          <p>
+            A dynamic professional with diverse experience in business
+            management, business operations and graphic design. I have
+            successfully overseen the daily operations of a hostel ensuring top
+            tier guest satisfaction, efficient team coordination, and financial
+            oversight.
+          </p>
+          <p>
+            In the electronics sector, I have managed business processes, supply
+            chains, and customer relationships, demonstrating adaptability and
+            strategic thinking to achieve measurable results.
+          </p>
+          <p>
+            Additionally, I bring creativity to the table as a graphic designer,
+            creating impactful designs tailored to various needs, blending
+            artistry with purpose to deliver visually compelling solutions.
+          </p>
+          <p>
+            With a unique mix of operational expertise and creative insight, I
+            am passionate about solving problems, building meaningful
+            connections, and driving success across multiple domains.
+          </p>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience">
+        <div class="section-title">EXPERIENCE</div>
+
+        <h3>Creative Designer</h3>
+        <p><strong>Doxah Media</strong></p>
+
+        <ul class="bullet-list">
+          <li>
+            Designed creative and strategic visual assets for a variety of
+            clients, including logos, marketing flyers, and full brand identity
+            systems.
+          </li>
+          <li>
+            Developed branding solutions tailored to each client's unique
+            vision, ensuring consistency across digital and print media.
+          </li>
+          <li>
+            Proficient in industry-standard tools including Adobe Illustrator,
+            Adobe Photoshop, and Figma.
+          </li>
+          <li>
+            Collaborated with small businesses, startups, and individuals to
+            bring their visual ideas to life, with a strong focus on clean,
+            modern aesthetics and brand clarity.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education">
+        <div class="section-title">EDUCATION</div>
+
+        <div class="edu-list">
+        <div class="edu-item">
+            <div class="edu-info">
+        <h3>University of Benin</h3>
+        <p>Bachelor of Science - Integrated Science Education</p>
+            </div>
+            <div class="edu-date">(2012 - 2016)</div>
+        </div>
+        
+        
+        <div class="edu-item">
+            <div class="edu-info">
+                <h3>Uniben Demonstration Secondary School</h3>
+                <p>&nbsp;</p> 
+                <!-- Spacer for visual alignment  -->
+                </div>
+                <div class="edu-date"> (2005 - 2011)</div>
+            </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills">
+        <div class="section-title">SKILLS</div>
+
+        <h3>Workflow</h3>
+        <ul class="bullet-list">
+          <li>Branding & Identity Design</li>
+          <li>Logo Design</li>
+          <li>Flyer & Poster Design</li>
+          <li>Mockups & Visual Presentations</li>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+        </ul>
+      </section>
+    </div>
+
+    <a href="#">Back to Top</a>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navLinks");
+    menu.classList.toggle("active");
+  }
+</script>
+  </body>
+</html>
