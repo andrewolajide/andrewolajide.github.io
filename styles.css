@@ -195,6 +195,7 @@ body {
 #hero {
   position: relative;
   min-height: 100svh;
+  width: 100%;
   padding: 0 4rem 6rem; /* 👈 bottom padding added */
   display: flex;
   align-items: center;
