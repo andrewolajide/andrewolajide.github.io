@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Web design, Graphic design, Web developer" />
+    <meta name="description" content="Web design and development" />
+    <title>Andrew Olajide</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/profilePicture.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    /></noscript>
+  </head>
+  <body>
+    <canvas id="smoke-canvas"></canvas>
+    <div class="portfolio-bg">
+      <div class="noise"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-bar-row">
+          <div class="nav-left">
+            <a href="index.html" id="nav-title"
+              ><span class="gradient-text">Andrew_Olajide</span></a
+            >
+          </div>
+
+          <div class="nav-right">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+
+            <div class="social-icons">
+              <span class="divider"></span>
+              <a
+                href="https://www.instagram.com/drewolajide"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/andrewolajide"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="hamburger" onclick="toggleMenu(this)">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <ul class="mobile-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="li-social-icons">
+            <div class="social-icons nav-social-icons">
+              <a
+                href="https://www.instagram.com/drewolajide"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/andrewolajide"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="hero">
+      <div class="hero-content">
+        <p id="heroButton1">Available for projects</p>
+
+        <h1>
+          <span class="gradient-text">Web Developer</span> &<br />Graphic
+          Designer
+        </h1>
+
+        <p class="hero-subtext">
+          Crafting digital experiences that merge technical precision with
+          visual storytelling
+        </p>
+
+        <div class="btnRow">
+          <a href="#projects"
+            ><button class="portfolioBtn">View Projects</button></a
+          >
+          <a href="#contact"><button>Get in Touch</button></a>
+        </div>
+      </div>
+
+      <div class="scrollBounce">
+        SCROLL<br /><i class="fa-solid fa-arrow-down"></i>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="aboutImage reveal reveal-left">
+        <!-- <div class="pTiles">
+          <p class="pTile">Web Developer</p>
+          <p class="pTile">Designer</p>
+          <p class="pTile">Freelancer</p>
+        </div> -->
+
+        <img
+          src="images/profilePicture.png"
+          alt="Profile Picture"
+          class="profilePic"
+        />
+      </div>
+      <div class="aboutDesc reveal reveal-right">
+        <h2>About <span class="gradient-text">Andrew</span></h2>
+        <div class="aboutMeta">
+          <p class="location">Benin City, Nigeria</p>
+          <p>4+ years</p>
+          <p>Remote work</p>
+        </div>
+        <p>
+          I'm a web developer and graphic designer based in Benin City, Nigeria,
+          with over 4 years of experience creating digital solutions for clients
+          worldwide. My work combines technical precision with creative vision
+          to deliver websites and designs that are both beautiful and
+          functional. I specialize in helping businesses establish their online
+          presence through custom web development and compelling visual design.
+        </p>
+        <div class="aboutBox reveal reveal-left">
+          <div class="aboutBoxText">
+            <p>PHILOSOPHY</p>
+            <h3>Design Meets Code</h3>
+            <p>
+              I believe great digital products are born at the intersection of
+              beautiful design and clean code. Every project is an opportunity
+              to create something that not only looks stunning but works
+              flawlessly. My approach combines technical expertise with creative
+              vision to deliver exceptional results.
+            </p>
+          </div>
+
+          <div class="philosophyBoxDesign"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>WHAT I OFFER</h2>
+      <p>Comprehensive digital solutions tailored to your needs</p>
+      <div class="servicesRow">
+        <div class="servicesBox card reveal reveal-up">
+          <img
+            src="images/service1.jpg"
+            alt="Services Rendered"
+            class="servicesPic"
+          />
+          <div class="card-text">
+            <h4>Web Design & Development</h4>
+            <p>
+              Modern, responsive websites designed and built for clarity and
+              usability
+            </p>
+            <a href="#contact"><button>Start a Conversation</button></a>
+            <p class="pDesc">Prices vary based on project scope</p>
+          </div>
+        </div>
+
+        <div class="servicesBox card reveal reveal-up">
+          <img
+            src="images/service3.jpg"
+            alt="Services Rendered"
+            class="servicesPic"
+          />
+          <div class="card-text">
+            <h4>Web Redesign & Optimization</h4>
+            <p>
+              Refining existing websites to look better and work more
+              effectively.
+            </p>
+            <a href="#contact"><button>Start a Conversation</button></a>
+            <p class="pDesc">Prices vary based on project scope</p>
+          </div>
+        </div>
+
+        <div class="servicesBox card reveal reveal-up">
+          <img
+            src="images/service2.jpg"
+            alt="Services Rendered"
+            class="servicesPic"
+          />
+          <div class="card-text">
+            <h4>Graphic Design</h4>
+            <p>
+              Visual designs that showcase your brand across digital platforms
+            </p>
+            <a href="#contact"><button>Start a Conversation</button></a>
+            <p class="pDesc">Prices vary based on project scope</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="projectDot">Recent work</p>
+      <h2>SELECTED PROJECTS</h2>
+      <p>
+        A showcase of diverse projects demonstrating technical expertise and
+        creative problem-solving across various industries and platforms.
+      </p>
+      <div class="projectRow">
+        <a
+          href="https://kvdpropertyinvestment.com/"
+          target="_blank"
+          rel="noopener"
+          class="projectBox card reveal reveal-up"
+        >
+          <img src="images/kvd.png" alt="Projects" class="projectPic" />
+          <div class="card-text">
+            <span class="stars"></span>
+
+            <h4>KVD Property Investment</h4>
+            <p>
+              A real estate platform combining a modern listing website with a
+              custom Property Management System, delivering seamless UX and
+              efficient backend control.
+              <strong>View live site</strong>
+            </p>
+          </div>
+        </a>
+        <a
+          href="http://golden-chidi.vercel.app/"
+          target="_blank"
+          rel="noopener"
+          class="projectBox card reveal reveal-up"
+        >
+          <img
+            src="images/Golden-chidi.png"
+            alt="Projects"
+            class="projectPic"
+          />
+          <div class="card-text">
+            <span class="stars"></span>
+
+            <h4>Golden Chidi - Realtor</h4>
+            <p>
+              A responsive real estate website for Golden Chidi, featuring
+              property listings and training programs. Developed as a portfolio
+              project.
+              <strong>View live site</strong>
+            </p>
+          </div>
+        </a>
+        <a
+          href="https://bright-future-academy-andrew.vercel.app/"
+          target="_blank"
+          rel="noopener"
+          class="projectBox card reveal reveal-up"
+        >
+          <img
+            src="images/bright-future.png"
+            alt="Projects"
+            class="projectPic"
+          />
+          <div class="card-text">
+            <span class="stars"></span>
+
+            <h4>Bright Future Academy</h4>
+            <p>
+              School website delivering smooth and informative user experience,
+              with a structured layout for showcasing academic programs,
+              admissions, and key school information.
+              <strong>View live site</strong>
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="reveal reveal-up">LET'S BUILD SOMETHING TOGETHER</h2>
+      <p class="reveal reveal-up">
+        Ready to start your project? Get in touch and let's discuss how I can
+        help bring your vision to life
+      </p>
+      <a href="#form-wrapper"
+        ><button>
+          Start a conversation<i class="fa-solid fa-arrow-right"></i></button
+      ></a>
+      <div class="contact-wrapper">
+        <div class="contact-info reveal reveal-left">
+          <h3><span class="gradient-text">Contact Information</span></h3>
+          <!-- Row Start -->
+          <div class="contact-row">
+            <div class="contact-box">
+              <div class="contact-icon"><i class="ri-mail-line"></i></div>
+              <div class="contact-text">
+                <p class="contact-head">
+                  <span class="gradient-text">Email</span>
+                </p>
+                <a href="mailto:doxahmedia@gmail.com">
+                  <span>doxahmedia@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-box">
+              <div class="contact-icon"><i class="ri-phone-line"></i></div>
+              <div class="contact-text">
+                <p class="contact-head">
+                  <span class="gradient-text">Phone</span>
+                </p>
+                <a href="tel:+234 706 226 9761">
+                  <span>+234 706 226 9761</span></a
+                >
+              </div>
+            </div>
+
+            <div class="contact-box">
+              <div class="contact-icon"><i class="ri-map-pin-line"></i></div>
+              <div class="contact-text">
+                <p class="contact-head">
+                  <span class="gradient-text">Location</span>
+                </p>
+                <p>Available globally</p>
+                <p style="font-size: 0.9rem; color: rgb(211, 211, 211)">
+                  Available for remote work
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Row end -->
+        </div>
+
+        <div id="form-wrapper" class="reveal reveal-right">
+          <h3>Send Me a Message</h3>
+          <form
+            action="https://formsubmit.co/ajax/doxahmedia@gmail.com"
+            method="POST"
+            id="myContactForm"
+          >
+            <input type="text" name="_honey" style="display: none" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name*</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="John Doe"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="john@example.com"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Select Service*</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="webDesign">Web Design & Development</option>
+                <option value="graphicDesign">Graphic Design</option>
+                <option value="webRedesign">Web Redesign & Improvement</option>
+                <option value="consultation">General Consultation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details*</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+            <div id="form-status" style="margin-top: 1rem; display: none"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools">
+      <span class="toolsLine"></span>
+      <p class="tools-head">Technologies & Tools I Work With</p>
+      <div class="toolsRow">
+        <p class="reveal reveal-up">HTML5</p>
+        <p class="reveal reveal-up">CSS3</p>
+        <p class="reveal reveal-up">Java Script</p>
+        <p class="reveal reveal-up">Figma</p>
+        <p class="reveal reveal-up">Adobe Photoshop</p>
+        <p class="reveal reveal-up">Adobe Illustrator</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-columns">
+          <div class="footer-section align-center">
+            <h3><span class="gradient-text">ANDREW OLAJIDE</span></h3>
+            <p>Transforming ideas into user-friendly digital experiences</p>
+          </div>
+        </div>
+      </div>
+      <span class="footLine"></span>
+      <div class="footerBottom">
+        <p class="footer-copy">© 2026 All rights reserved.</p>
+      </div>
+    </footer>
+    <div class="fixed-actions">
+      <button id="scrollTopBtn" class="action-btn">
+        <i class="ri-arrow-up-line"></i>
+      </button>
+
+      <a
+        href="https://wa.me/2347062269761"
+        target="_blank"
+        class="action-btn whatsapp-btn"
+      >
+        <i class="ri-whatsapp-line"></i>
+        <span class="tooltip">Chat with us</span>
+      </a>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

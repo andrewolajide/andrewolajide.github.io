@@ -1,0 +1,1417 @@
+:root {
+  --bg-deep: #020617; /* slate-950 */
+  --bg-mid: #0f172a; /* slate-900 */
+  --bg-accent: #1e1b4b; /* indigo-950 */
+  --font-body: "Manrope", sans-serif;
+  --font-heading: "Orbitron", sans-serif;
+}
+
+.portfolio-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #020617; /* Deep base */
+  overflow: hidden;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* Above the orbs */
+  opacity: 0.03; /* Very subtle! Increase to 0.06 if needed */
+  pointer-events: none;
+  background-size: 4px 4px; /* Controls the size of the line grid */
+  background-repeat: repeat;
+
+  /* New Scanline SVG: Creates precise horizontal bands */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='1' fill='white'/%3E%3C/svg%3E");
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+}
+
+/* --- ORB 1: Anchored Top-Left --- */
+.orb-1 {
+  top: -10%;
+  left: -5%;
+  width: 50vw; /* Using viewport width for better scaling */
+  height: 50vw;
+  background: radial-gradient(circle, #3b82f6, transparent);
+  animation: move-top-left 5s ease-in-out infinite alternate;
+}
+
+/* --- ORB 2: Anchored Bottom-Right --- */
+.orb-2 {
+  bottom: -10%;
+  right: -5%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, #06b6d4, transparent);
+  animation: move-bottom-right 10s ease-in-out infinite alternate-reverse;
+}
+
+/* Movements that stay in their own corners */
+@keyframes move-top-left {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    /* Moves down and slightly inward, but stays top-left heavy */
+    transform: translate(10vw, 30vh) scale(1.1);
+  }
+}
+
+@keyframes move-bottom-right {
+  from {
+    transform: translate(0, 0) scale(1.2);
+  }
+  to {
+    /* Moves up and slightly inward, but stays bottom-right heavy */
+    transform: translate(-10vw, -35vh) scale(1);
+  }
+}
+
+#smoke-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10000;
+
+  /* Reduced blur for a sharper, more 'electric' trail */
+  filter: blur(1.5px);
+  mix-blend-mode: lighter;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: white;
+  line-height: 1.6;
+  font-size: 16px;
+  background-attachment: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif;
+  color: white;
+}
+
+.gradient-text {
+  /* 1. Define the gradient colors */
+  background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
+
+  /* 2. Clip the background to the text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 3. Make the actual text color transparent so the background shows */
+  color: transparent;
+
+  /* 4. Extra styling for impact */
+  font-weight: 800;
+  display: inline-block;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  color: white;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-text {
+  padding: 1rem 1.5rem;
+}
+
+.visual-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: grayscale(20%); /* Desaturate slightly by default */
+  transition: all 0.4s ease;
+}
+
+.visual-card:hover img {
+  filter: grayscale(0%) saturate(110%); /* Pop the colors on hover */
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.nav-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(1rem, 4vw, 1.4rem) clamp(1.5rem, 6vw, 4rem);
+}
+
+.nav-logo {
+  height: 24px;
+  display: block; /* remove inline baseline issues */
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#nav-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 4vw, 1.2rem);
+  font-weight: 600;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.social-icons i {
+  font-size: 1.3rem;
+}
+
+.divider {
+  width: 1px; /* thin vertical line */
+  height: 24px; /* match icon/text height */
+  background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+  display: inline-block;
+  margin: 0 1rem; /* spacing on left and right */
+}
+
+.hamburger {
+  display: none;
+  position: relative;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001; /* keep above menu */
+}
+
+.hamburger span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger.active span {
+  background: white;
+}
+
+.hamburger span:nth-child(1) {
+  transform: translateY(-7px);
+}
+
+.hamburger span:nth-child(2) {
+  transform: translateY(0);
+}
+
+.hamburger span:nth-child(3) {
+  transform: translateY(7px);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 3rem;
+  width: 80%;
+  height: 100vh; /* full viewport height */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 998;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  transform: translateX(-100%);
+}
+
+.mobile-menu.active {
+  display: flex;
+  transform: translateX(0);
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu li {
+  list-style: none;
+  width: 100%;
+  /* border-bottom: 1px solid white; */
+}
+
+.mobile-menu li a {
+  font-family: var(--font-body);
+  display: block;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(190, 189, 189, 0.4);
+  font-size: 1rem;
+}
+
+.mobile-menu > li > a:hover {
+  background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
+}
+
+.mobile-menu .li-social-icons a {
+  border-bottom: none;
+}
+
+.nav-social-icons {
+  margin: auto 0;
+  justify-content: left;
+  gap: 0.5rem;
+}
+
+.mobile-menu .social-icons a:hover {
+  color: #60a5fa;
+}
+
+#hero {
+  position: relative;
+  height: 100svh;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem); /* 👈 bottom padding added */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  margin-top: 10rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+#hero #heroButton1 {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  padding: clamp(0.3rem, 3vw, 0.5rem) clamp(1.2rem, 4vw, 1.3rem)
+    clamp(0.3rem, 3vw, 0.5rem) clamp(1.8rem, 4vw, 2rem); /* 👈 extra left padding for dot */
+  font-size: clamp(0.8rem, 4vw, 1rem);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  display: inline-block;
+}
+
+#heroButton1::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #09f16a; /* dot color */
+  border-radius: 50%;
+}
+
+#hero h1 {
+  font-size: clamp(2.3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 1rem 0 1.5rem 0;
+  padding: 0;
+  color: white;
+}
+
+.hero-subtext {
+  font-size: clamp(0.95rem, 4vw, 1.1rem);
+  max-width: 750px;
+  margin: 0 auto 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#hero .btnRow {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+#hero .btnRow button {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-family: var(--font-body);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+#hero .btnRow button:hover {
+  transform: translateY(-2px);
+}
+
+#hero .btnRow .portfolioBtn {
+  background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
+  border: none;
+  color: #181717;
+  font-weight: 600;
+}
+
+.scrollBounce {
+  position: absolute;
+  bottom: clamp(1rem, 3vw, 2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+  font-size: 1rem;
+  color: white;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+#about {
+  display: flex;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 4rem);
+  margin-top: 2rem;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* .pTiles { 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-right: 4rem;
+  position: absolute;
+  left: 1.5rem;
+  top: 3rem;
+  z-index: 10;
+}
+
+.pTile {
+  border-radius: 20px;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}*/
+
+.aboutImage {
+  flex: 1.2;
+  aspect-ratio: 4/5;
+  width: 100%;
+  max-height: 500px;
+}
+
+.profilePic {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.aboutDesc {
+  display: flex;
+  flex: 1.8;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.aboutDesc h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+.aboutMeta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 1rem;
+}
+
+.aboutDesc .location {
+  border: solid 1px white;
+  border-radius: 20px;
+  padding: 0.3rem 0.7rem;
+  max-width: fit-content;
+}
+
+.aboutBox {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05); /* Very light white */
+  backdrop-filter: blur(12px); /* The "frosted glass" look */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  margin: 1rem 0 0 0;
+  gap: 2rem;
+}
+
+.aboutBoxText {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutBoxText > p {
+  margin-bottom: 0.5rem;
+}
+
+.aboutBoxText h3 {
+  font-size: 1.5rem;
+}
+
+.philosophyBoxDesign {
+  background: linear-gradient(135deg, #6a11cb, #d63096);
+  color: black;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 3rem;
+  height: 90px;
+  width: 90px;
+  transform: rotate(20deg);
+  animation: spin 10s linear infinite; /* spins continuously */
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#services {
+  padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 6vw, 4rem);
+}
+#services h2 {
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+.servicesRow {
+  margin-top: clamp(1rem, 4vw, 2rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.servicesBox {
+  margin-top: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  overflow: hidden;
+}
+
+.servicesBox:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  transform: translateY(-6px);
+}
+
+.servicesPic {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.servicesBox h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.servicesBox h4 {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  margin: 1rem 0;
+}
+.servicesBox p {
+  font-size: 1rem;
+  color: #b1afaf;
+}
+
+.servicesBox button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  border-radius: 50px;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.servicesBox button:hover {
+  background: black;
+  color: white;
+}
+
+.servicesBox .pDesc {
+  font-size: 0.8rem;
+  color: #9b9b9b;
+  text-align: center;
+}
+
+#projects {
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 6vw, 4rem);
+}
+#projects h2 {
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  max-width: 300px;
+  line-height: 5rem;
+}
+
+#projects p {
+  max-width: 700px;
+}
+
+.projectDot {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  padding: 0.6rem 1.3rem 0.6rem 2rem; /* 👈 extra left padding for dot */
+}
+
+.projectDot::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #ff9b05; /* dot color */
+  border-radius: 50%;
+}
+
+.projectRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: clamp(1rem, 4vw, 2rem);
+}
+.projectBox {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.projectBox:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  transform: translateY(-6px);
+}
+
+.projectPic {
+  width: 100%;
+  object-fit: cover;
+  height: 250px;
+  transition: transform 0.3s ease;
+}
+
+.projectBox:hover img {
+  transform: scale(1.05);
+}
+
+.stars::before {
+  content: "★★★★★";
+  letter-spacing: 0.2rem;
+  color: #f5c518;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+.projectBox h4 {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.projectBox p {
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+#contact {
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: clamp(3rem, 5vw, 4.5rem);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  max-width: 800px;
+  justify-self: center;
+}
+
+#contact > h2 + p {
+  font-size: clamp(1.1rem, 4vw, 1.2rem);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  justify-self: center;
+}
+
+#contact button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+#contact button:hover {
+  background: opacity(0.8);
+}
+
+.contact-wrapper {
+  display: flex;
+  padding-top: 4rem;
+  gap: 5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.contact-wrapper h3 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.contact-box {
+  display: flex;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.contact-box a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.contact-box a:hover {
+  color: #60a5fa;
+}
+
+.contact-head {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.contact-box i {
+  display: inline-flex;
+  margin-right: 0.5rem;
+  background: #0f172a;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+#form-wrapper {
+  background: rgba(255, 255, 255, 0.05); /* Very light white */
+  backdrop-filter: blur(12px); /* The "frosted glass" look */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  font-family: var(--font-body);
+  width: 70%;
+}
+
+#form-wrapper h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  color: white;
+  text-align: left;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.6rem;
+  border: 1px solid #bbb9b9;
+  border-radius: 5px;
+  background: none;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15);
+  outline: none;
+}
+
+.form-group select option {
+  color: black;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-check input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background: transparent;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-check input[type="checkbox"]::after {
+  content: "";
+  width: 6px;
+  height: 12px;
+  border-right: 2.5px solid white;
+  border-bottom: 2.5px solid white;
+  transform: scale(0) rotate(45deg);
+  transform-origin: bottom left;
+  position: absolute;
+  top: -35%;
+  left: 0%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.form-check input[type="checkbox"]:checked::after {
+  transform: scale(1) rotate(45deg);
+}
+
+.form-check a {
+  color: #ff9a00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#form-wrapper .submit-btn {
+  background-color: #ff9a00;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1.1rem 2rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: var(--font-body);
+  display: inline-block;
+  margin-left: 0; /* stick to left */
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: white;
+  color: #ff9a00;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  border: 2px solid #00e9df;
+}
+
+.tools {
+  padding: 0 clamp(1.5rem, 6vw, 4rem) clamp(2rem, 6vw, 4rem)
+    clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+}
+
+.toolsLine {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #6a11cb,
+    #d63096,
+    transparent
+  );
+  margin: 2rem 0;
+}
+.tools .tools-head {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+.toolsRow {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  text-wrap: nowrap;
+}
+
+.site-footer {
+  background-color: #101010;
+  color: white;
+  width: 100%;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 6vw, 5rem);
+  line-height: 1rem;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 16px;
+}
+.site-footer a {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer i {
+  display: inline-flex;
+  margin-right: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.site-footer i:hover {
+  transform: scale(1.1); /* slight pop effect */
+}
+
+.site-footer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 2rem;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.align-center h3 + p {
+  line-height: 1.4;
+}
+
+.footLine {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #6a11cb,
+    #d63096,
+    transparent
+  );
+  margin: 2rem 0;
+}
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerBottom p {
+  font-size: 0.8rem;
+}
+
+/* =============================
+  SCROLL ANIMATION
+============================= */
+/* Base settings for all reveals */
+.reveal {
+  opacity: 0;
+  /* This bezier curve (0.22, 1, 0.36, 1) is known as 'Ease Out Quart' 
+     It feels very premium and smooth */
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Modifier: Fade Up */
+.reveal-up {
+  transform: translateY(40px);
+}
+
+/* Modifier: Fade from Left */
+.reveal-left {
+  transform: translateX(-60px);
+}
+
+/* Modifier: Fade from Right */
+.reveal-right {
+  transform: translateX(60px);
+}
+
+/* THE TRIGGER: This brings everything to center/full opacity */
+.reveal.active {
+  opacity: 1;
+  transform: translate(0, 0);
+  pointer-events: auto;
+}
+
+/* Card 1: Default delay */
+.card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.card:nth-child(3) {
+  transition-delay: 0.4s;
+}
+
+/* =============================
+  SCROLL TO TOP AND WHATSAPP BUTTON
+============================= */
+/* Container for fixed buttons */
+.fixed-actions {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 990; /* Ensure they are above everything */
+}
+
+/* Base style for both buttons */
+.action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none; /* For the link */
+}
+
+/* Scroll to Top Specifics */
+#scrollTopBtn {
+  background: rgba(255, 255, 255, 0.05); /* Very light white */
+  backdrop-filter: blur(12px); /* The "frosted glass" look */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  opacity: 0; /* Hidden by default */
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* WhatsApp Specifics */
+.whatsapp-btn {
+  background: #25d366; /* Official WhatsApp Green */
+  color: white;
+  position: relative;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  background: #20ba5a;
+}
+
+/* Optional Tooltip for WhatsApp */
+.tooltip {
+  position: absolute;
+  right: 60px;
+  background: #333;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.whatsapp-btn:hover .tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  .aboutDesc {
+    max-width: none;
+  }
+
+  .aboutBox {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  #about {
+    flex-direction: column;
+    margin-top: 0;
+    align-items: center;
+  }
+
+  .aboutImage {
+    aspect-ratio: 1/1;
+    max-width: 500px;
+  }
+
+  .contact-wrapper {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #form-wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero-subtext {
+    font-size: 1rem;
+  }
+
+  #about {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .aboutImage {
+    aspect-ratio: 4/5;
+  }
+
+  .aboutDesc h2 {
+    margin-bottom: 1rem;
+  }
+
+  .aboutBox {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .aboutBoxText {
+    width: 100%;
+    max-width: none;
+  }
+
+  .aboutDesc {
+    max-width: none;
+    width: 100%;
+  }
+
+  .pTiles {
+    left: 3rem;
+    top: 6rem;
+    margin-right: 1rem;
+  }
+
+  .aboutBox {
+    flex-direction: column-reverse;
+    padding: 1.5rem;
+  }
+
+  .philosophyBoxDesign {
+    margin-top: 0;
+  }
+
+  .servicesBox {
+    flex: 1 1 100%;
+  }
+
+  #projects h2 {
+    line-height: 3rem;
+  }
+
+  #form-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .toolsRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: flex-start;
+    gap: 1rem;
+    text-wrap: wrap;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .site-footer i {
+    justify-content: left;
+    margin-left: 0;
+  }
+
+  .social-icons {
+    margin-left: 0;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .fixed-actions {
+    bottom: 20px;
+    right: 20px;
+  }
+  .action-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 500px) {
+  #hero .btnRow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #hero .btnRow button {
+    width: 100%;
+  }
+
+  .aboutMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .toolsRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .scrollBounce {
+    display: none;
+  }
+
+  .aboutImage {
+    max-height: 400px;
+  }
+}
