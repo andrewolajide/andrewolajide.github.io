@@ -10,20 +10,19 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: #020617; /* Deep base */
+  background-color: #020617;
   overflow: hidden;
 }
 
 .noise {
   position: absolute;
   inset: 0;
-  z-index: 1; /* Above the orbs */
-  opacity: 0.03; /* Very subtle! Increase to 0.06 if needed */
+  z-index: 1;
+  opacity: 0.03;
   pointer-events: none;
-  background-size: 4px 4px; /* Controls the size of the line grid */
+  background-size: 4px 4px;
   background-repeat: repeat;
 
-  /* New Scanline SVG: Creates precise horizontal bands */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='1' fill='white'/%3E%3C/svg%3E");
 }
 
@@ -38,7 +37,7 @@
 .orb-1 {
   top: -10%;
   left: -5%;
-  width: 50vw; /* Using viewport width for better scaling */
+  width: 50vw;
   height: 50vw;
   background: radial-gradient(circle, #3b82f6, transparent);
   animation: move-top-left 5s ease-in-out infinite alternate;
@@ -54,13 +53,11 @@
   animation: move-bottom-right 10s ease-in-out infinite alternate-reverse;
 }
 
-/* Movements that stay in their own corners */
 @keyframes move-top-left {
   from {
     transform: translate(0, 0) scale(1);
   }
   to {
-    /* Moves down and slightly inward, but stays top-left heavy */
     transform: translate(10vw, 30vh) scale(1.1);
   }
 }
@@ -70,7 +67,6 @@
     transform: translate(0, 0) scale(1.2);
   }
   to {
-    /* Moves up and slightly inward, but stays bottom-right heavy */
     transform: translate(-10vw, -35vh) scale(1);
   }
 }
@@ -84,7 +80,6 @@
   pointer-events: none;
   z-index: 10000;
 
-  /* Reduced blur for a sharper, more 'electric' trail */
   filter: blur(1.5px);
   mix-blend-mode: lighter;
 }
@@ -124,17 +119,13 @@ h6 {
 }
 
 .gradient-text {
-  /* 1. Define the gradient colors */
   background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
 
-  /* 2. Clip the background to the text shape */
   -webkit-background-clip: text;
   background-clip: text;
 
-  /* 3. Make the actual text color transparent so the background shows */
   color: transparent;
 
-  /* 4. Extra styling for impact */
   font-weight: 800;
   display: inline-block;
 }
@@ -158,18 +149,6 @@ h6 {
 
 .card-text {
   padding: 1rem 1.5rem;
-}
-
-.visual-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  filter: grayscale(20%); /* Desaturate slightly by default */
-  transition: all 0.4s ease;
-}
-
-.visual-card:hover img {
-  filter: grayscale(0%) saturate(110%); /* Pop the colors on hover */
 }
 
 .navbar {
@@ -198,7 +177,7 @@ h6 {
 
 .nav-logo {
   height: 24px;
-  display: block; /* remove inline baseline issues */
+  display: block;
 }
 
 .navbar a {
@@ -239,11 +218,11 @@ h6 {
 }
 
 .divider {
-  width: 1px; /* thin vertical line */
-  height: 24px; /* match icon/text height */
-  background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.5);
   display: inline-block;
-  margin: 0 1rem; /* spacing on left and right */
+  margin: 0 1rem;
 }
 
 .hamburger {
@@ -302,7 +281,7 @@ h6 {
   left: 0;
   padding-top: 3rem;
   width: 80%;
-  height: 100vh; /* full viewport height */
+  height: 100vh;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -321,7 +300,6 @@ h6 {
 .mobile-menu li {
   list-style: none;
   width: 100%;
-  /* border-bottom: 1px solid white; */
 }
 
 .mobile-menu li a {
@@ -357,7 +335,7 @@ h6 {
 #hero {
   position: relative;
   height: 100svh;
-  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem); /* 👈 bottom padding added */
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -378,7 +356,7 @@ h6 {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 50px;
   padding: clamp(0.3rem, 3vw, 0.5rem) clamp(1.2rem, 4vw, 1.3rem)
-    clamp(0.3rem, 3vw, 0.5rem) clamp(1.8rem, 4vw, 2rem); /* 👈 extra left padding for dot */
+    clamp(0.3rem, 3vw, 0.5rem) clamp(1.8rem, 4vw, 2rem); /* extra left padding for dot */
   font-size: clamp(0.8rem, 4vw, 1rem);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -394,7 +372,7 @@ h6 {
   transform: translateY(-50%);
   width: 8px;
   height: 8px;
-  background-color: #09f16a; /* dot color */
+  background-color: #09f16a;
   border-radius: 50%;
 }
 
@@ -471,6 +449,8 @@ h6 {
   }
 }
 
+/* ABOUT SECTION */
+
 #about {
   display: flex;
   padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 4rem);
@@ -478,27 +458,6 @@ h6 {
   gap: 3rem;
   align-items: center;
 }
-
-/* .pTiles { 
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-right: 4rem;
-  position: absolute;
-  left: 1.5rem;
-  top: 3rem;
-  z-index: 10;
-}
-
-.pTile {
-  border-radius: 20px;
-  color: white;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}*/
 
 .aboutImage {
   flex: 1.2;
@@ -547,8 +506,8 @@ h6 {
 
 .aboutBox {
   display: flex;
-  background: rgba(255, 255, 255, 0.05); /* Very light white */
-  backdrop-filter: blur(12px); /* The "frosted glass" look */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
   padding: 1rem 2rem;
@@ -579,7 +538,7 @@ h6 {
   height: 90px;
   width: 90px;
   transform: rotate(20deg);
-  animation: spin 10s linear infinite; /* spins continuously */
+  animation: spin 10s linear infinite;
 }
 @keyframes spin {
   from {
@@ -590,13 +549,88 @@ h6 {
   }
 }
 
+/* ===================
+TECH STACK SECTION
+======================*/
+.tech-stack {
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 6vw, 4rem);
+}
+
+.tech-stack h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.tech-stack h2 + p {
+  text-align: center;
+  font-size: clamp(1rem, 4vw, 1.1rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+  color: #06b6d4;
+}
+
+.stack-central-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.stack-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-group h3 {
+  padding-bottom: 1rem;
+  margin: 0;
+}
+
+.stack-items {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-grow: 1;
+}
+
+.stack-item {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.stack-item i {
+  color: #818cf8;
+}
+
+.stack-item:hover {
+  background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
+  color: black;
+}
+
+.stack-item:hover i {
+  color: black;
+}
+
+/* SERVICES SECTION */
 #services {
   padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 6vw, 4rem);
 }
 #services h2 {
   font-size: clamp(2.2rem, 7vw, 4.2rem);
   margin-bottom: 0.5rem;
-  font-weight: 300;
 }
 .servicesRow {
   margin-top: clamp(1rem, 4vw, 2rem);
@@ -685,7 +719,7 @@ h6 {
   display: inline-block;
   margin-bottom: 1rem;
   font-size: 1rem;
-  padding: 0.6rem 1.3rem 0.6rem 2rem; /* 👈 extra left padding for dot */
+  padding: 0.6rem 1.3rem 0.6rem 2rem; /* extra left padding for dot */
 }
 
 .projectDot::before {
@@ -696,7 +730,7 @@ h6 {
   transform: translateY(-50%);
   width: 8px;
   height: 8px;
-  background-color: #ff9b05; /* dot color */
+  background-color: #ff9b05;
   border-radius: 50%;
 }
 
@@ -845,8 +879,8 @@ h6 {
 }
 
 #form-wrapper {
-  background: rgba(255, 255, 255, 0.05); /* Very light white */
-  backdrop-filter: blur(12px); /* The "frosted glass" look */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 2rem;
   border-radius: 20px;
@@ -975,7 +1009,7 @@ textarea {
   transition: 0.3s;
   font-family: var(--font-body);
   display: inline-block;
-  margin-left: 0; /* stick to left */
+  margin-left: 0;
   width: 100%;
 }
 
@@ -986,37 +1020,6 @@ textarea {
     background-color 0.3s ease,
     color 0.3s ease;
   border: 2px solid #00e9df;
-}
-
-.tools {
-  padding: 0 clamp(1.5rem, 6vw, 4rem) clamp(2rem, 6vw, 4rem)
-    clamp(1.5rem, 6vw, 4rem);
-  text-align: center;
-}
-
-.toolsLine {
-  display: block;
-  width: 100%;
-  height: 1.5px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    #6a11cb,
-    #d63096,
-    transparent
-  );
-  margin: 2rem 0;
-}
-.tools .tools-head {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-}
-.toolsRow {
-  display: flex;
-  gap: 2.5rem;
-  justify-content: center;
-  text-wrap: nowrap;
 }
 
 .site-footer {
@@ -1055,7 +1058,7 @@ textarea {
 }
 
 .site-footer i:hover {
-  transform: scale(1.1); /* slight pop effect */
+  transform: scale(1.1);
 }
 
 .site-footer h3 {
@@ -1102,32 +1105,27 @@ textarea {
 /* =============================
   SCROLL ANIMATION
 ============================= */
-/* Base settings for all reveals */
+
 .reveal {
   opacity: 0;
-  /* This bezier curve (0.22, 1, 0.36, 1) is known as 'Ease Out Quart' 
-     It feels very premium and smooth */
+
   transition:
     opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Modifier: Fade Up */
 .reveal-up {
   transform: translateY(40px);
 }
 
-/* Modifier: Fade from Left */
 .reveal-left {
   transform: translateX(-60px);
 }
 
-/* Modifier: Fade from Right */
 .reveal-right {
   transform: translateX(60px);
 }
 
-/* THE TRIGGER: This brings everything to center/full opacity */
 .reveal.active {
   opacity: 1;
   transform: translate(0, 0);
@@ -1145,7 +1143,7 @@ textarea {
 /* =============================
   SCROLL TO TOP AND WHATSAPP BUTTON
 ============================= */
-/* Container for fixed buttons */
+
 .fixed-actions {
   position: fixed;
   bottom: 30px;
@@ -1153,10 +1151,9 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  z-index: 990; /* Ensure they are above everything */
+  z-index: 990;
 }
 
-/* Base style for both buttons */
 .action-btn {
   width: 50px;
   height: 50px;
@@ -1169,16 +1166,16 @@ textarea {
   transition: all 0.3s ease;
   border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  text-decoration: none; /* For the link */
+  text-decoration: none;
 }
 
 /* Scroll to Top Specifics */
 #scrollTopBtn {
-  background: rgba(255, 255, 255, 0.05); /* Very light white */
-  backdrop-filter: blur(12px); /* The "frosted glass" look */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--white);
-  opacity: 0; /* Hidden by default */
+  opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
 }
@@ -1191,7 +1188,7 @@ textarea {
 
 /* WhatsApp Specifics */
 .whatsapp-btn {
-  background: #25d366; /* Official WhatsApp Green */
+  background: #25d366;
   color: white;
   position: relative;
 }
@@ -1219,6 +1216,10 @@ textarea {
 .whatsapp-btn:hover .tooltip {
   opacity: 1;
 }
+
+/* ===================
+   MOBILE RESPONSIVENESS
+======================*/
 
 @media (max-width: 1200px) {
   .aboutDesc {
@@ -1340,14 +1341,6 @@ textarea {
     gap: 0;
   }
 
-  .toolsRow {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: flex-start;
-    gap: 1rem;
-    text-wrap: wrap;
-  }
-
   .footer-columns {
     flex-direction: column;
     gap: 2rem;
@@ -1396,13 +1389,6 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
-  }
-
-  .toolsRow {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    justify-content: flex-start;
-    gap: 1rem;
   }
 }
 
