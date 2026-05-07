@@ -76,7 +76,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   pointer-events: none;
   z-index: 10000;
   filter: blur(1.5px);
@@ -108,7 +108,6 @@ body {
   font-size: 16px;
   background-attachment: scroll;
   background-color: transparent;
-  min-height: 100dvh;
 }
 
 h1,
@@ -284,7 +283,7 @@ h6 {
   left: 0;
   padding-top: 3rem;
   width: 80%;
-  height: 100vh;
+  height: 100dvh;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
