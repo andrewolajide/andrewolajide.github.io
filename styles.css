@@ -105,7 +105,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   background-attachment: scroll;
-  background-color: black;
+  background-color: #020617;
 }
 
 h1,
@@ -334,7 +334,8 @@ h6 {
 
 #hero {
   position: relative;
-  height: 100svh;
+  height: 100vh;
+  height: 100dvh;
   padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem);
   display: flex;
   flex-direction: column;
