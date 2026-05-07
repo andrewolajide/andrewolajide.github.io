@@ -22,7 +22,6 @@
   pointer-events: none;
   background-size: 4px 4px;
   background-repeat: repeat;
-
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='1' fill='white'/%3E%3C/svg%3E");
 }
 
@@ -122,12 +121,9 @@ h6 {
 
 .gradient-text {
   background: linear-gradient(to right, #22d3ee, #60a5fa, #818cf8);
-
   -webkit-background-clip: text;
   background-clip: text;
-
   color: transparent;
-
   font-weight: 800;
   display: inline-block;
 }
@@ -336,8 +332,9 @@ h6 {
 
 #hero {
   position: relative;
-  height: 100dvh;
-  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem);
+  height: 100svh;
+  padding: clamp(5rem, 8vw, 10rem) clamp(1.5rem, 5vw, 4rem)
+    clamp(0.5rem, 5vw, 4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -347,7 +344,6 @@ h6 {
 }
 
 .hero-content {
-  margin-top: 10rem;
   max-width: 900px;
   width: 100%;
 }
@@ -398,7 +394,6 @@ h6 {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 4rem;
 }
 
 #hero .btnRow button {
@@ -455,8 +450,8 @@ h6 {
 
 #about {
   display: flex;
-  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 4rem);
-  margin-top: 2rem;
+  padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 6vw, 4rem)
+    clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 4rem);
   gap: 3rem;
   align-items: center;
 }
