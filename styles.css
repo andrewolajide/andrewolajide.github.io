@@ -93,6 +93,8 @@ html,
 body {
   overflow-x: hidden;
   max-width: 100%;
+  overscroll-behavior-y: none;
+  background-color: #020617;
 }
 
 html {
@@ -105,7 +107,6 @@ body {
   line-height: 1.6;
   font-size: 16px;
   background-attachment: scroll;
-  background-color: #020617;
 }
 
 h1,
