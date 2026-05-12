@@ -166,6 +166,13 @@ h6 {
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
 
+.navbar.scrolled:has(.mobile-menu.active) {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+}
+
 .nav-bar-row {
   display: flex;
   justify-content: space-between;
