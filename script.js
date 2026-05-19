@@ -1,31 +1,28 @@
-function toggleMenu(el) {
-  const menu = document.querySelector(".mobile-menu");
-  el.classList.toggle("active");
-  menu.classList.toggle("active");
+const body = document.body;
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".mobile-menu");
+const overlay = document.querySelector(".menu-overlay");
+
+function updateMenuState() {
+  const isActive = menu.classList.contains("active");
+
+  body.classList.toggle("menu-locked", isActive);
+  overlay.classList.toggle("active", isActive);
 }
 
-document.addEventListener("click", function (event) {
-  const hamburger = document.querySelector(".hamburger");
-  const menu = document.querySelector(".mobile-menu");
+function toggleMenu(el) {
+  el.classList.toggle("active");
+  menu.classList.toggle("active");
 
-  if (
-    !hamburger.contains(event.target) &&
-    !menu.contains(event.target) &&
-    hamburger.classList.contains("active")
-  ) {
-    hamburger.classList.remove("active");
-    menu.classList.remove("active");
-  }
-});
+  updateMenuState();
+}
 
-// Close mobile menu when a link is clicked
-document.querySelectorAll(".mobile-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    const hamburger = document.querySelector(".hamburger");
-    const menu = document.querySelector(".mobile-menu");
-    hamburger.classList.remove("active");
-    menu.classList.remove("active");
-  });
+// Close when clicking overlay
+overlay.addEventListener("click", () => {
+  hamburger.classList.remove("active");
+  menu.classList.remove("active");
+
+  updateMenuState();
 });
 
 // fixed navbar on scroll
