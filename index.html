@@ -114,41 +114,45 @@
             </div>
           </div>
 
-          <div class="hamburger" onclick="toggleMenu(this)">
+          <button class="hamburger" aria-expanded="false" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
-          </div>
+          </button>
         </div>
-
-        <div class="menu-overlay"></div>
-
-        <ul class="mobile-menu">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li class="li-social-icons">
-            <div class="social-icons nav-social-icons">
-              <a
-                href="https://github.com/andrewolajide"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fa-brands fa-github"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/andrewolajide"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fa-brands fa-linkedin-in"></i>
-              </a>
-            </div>
-          </li>
-        </ul>
       </div>
     </nav>
+
+    <div class="menu-overlay"></div>
+
+    <aside class="mobile-menu">
+      <button class="close-menu" onclick="closeMenu()">&times;</button>
+
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="li-social-icons">
+          <div class="social-icons nav-social-icons">
+            <a
+              href="https://github.com/andrewolajide"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/andrewolajide"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </aside>
 
     <section id="hero">
       <div class="hero-content">

@@ -1,71 +1,39 @@
 const body = document.body;
+const html = document.documentElement;
+
 const hamburger = document.querySelector(".hamburger");
 const menu = document.querySelector(".mobile-menu");
 const overlay = document.querySelector(".menu-overlay");
 
-let scrollY = 0;
+function openMenu() {
+  menu.classList.add("active");
+  overlay.classList.add("active");
 
-function lockBody() {
-  scrollY = window.scrollY;
+  html.classList.add("menu-open");
+  body.classList.add("menu-open");
 
-  body.style.position = "fixed";
-  body.style.top = `-${scrollY}px`;
-  body.style.left = "0";
-  body.style.width = "100%";
+  hamburger.setAttribute("aria-expanded", "true");
 }
 
-function unlockBody() {
-  body.style.position = "";
-  body.style.top = "";
-  body.style.left = "";
-  body.style.width = "";
-
-  window.scrollTo(0, scrollY);
-}
-
-function updateMenuState() {
-  const isActive = menu.classList.contains("active");
-
-  overlay.classList.toggle("active", isActive);
-
-  if (isActive) {
-    lockBody();
-  } else {
-    unlockBody();
-  }
-}
-
-function toggleMenu(el) {
-  el.classList.toggle("active");
-  menu.classList.toggle("active");
-
-  updateMenuState();
-}
-
-// Close when clicking outside
-overlay.addEventListener("click", () => {
-  hamburger.classList.remove("active");
+function closeMenu() {
   menu.classList.remove("active");
+  overlay.classList.remove("active");
 
-  updateMenuState();
-});
+  html.classList.remove("menu-open");
+  body.classList.remove("menu-open");
 
-// Close when clicking links
+  hamburger.setAttribute("aria-expanded", "false");
+}
+
+function toggleMenu() {
+  menu.classList.contains("active") ? closeMenu() : openMenu();
+}
+
+hamburger.addEventListener("click", toggleMenu);
+overlay.addEventListener("click", closeMenu);
+
 document.querySelectorAll(".mobile-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    menu.classList.remove("active");
-
-    updateMenuState();
-  });
-});
-
-// Close when clicking overlay
-overlay.addEventListener("click", () => {
-  hamburger.classList.remove("active");
-  menu.classList.remove("active");
-
-  updateMenuState();
+  link.addEventListener("click", closeMenu);
 });
 
 // fixed navbar on scroll
