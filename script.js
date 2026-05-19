@@ -3,11 +3,36 @@ const hamburger = document.querySelector(".hamburger");
 const menu = document.querySelector(".mobile-menu");
 const overlay = document.querySelector(".menu-overlay");
 
+let scrollY = 0;
+
+function lockBody() {
+  scrollY = window.scrollY;
+
+  body.style.position = "fixed";
+  body.style.top = `-${scrollY}px`;
+  body.style.left = "0";
+  body.style.width = "100%";
+}
+
+function unlockBody() {
+  body.style.position = "";
+  body.style.top = "";
+  body.style.left = "";
+  body.style.width = "";
+
+  window.scrollTo(0, scrollY);
+}
+
 function updateMenuState() {
   const isActive = menu.classList.contains("active");
 
-  body.classList.toggle("menu-locked", isActive);
   overlay.classList.toggle("active", isActive);
+
+  if (isActive) {
+    lockBody();
+  } else {
+    unlockBody();
+  }
 }
 
 function toggleMenu(el) {
@@ -16,6 +41,24 @@ function toggleMenu(el) {
 
   updateMenuState();
 }
+
+// Close when clicking outside
+overlay.addEventListener("click", () => {
+  hamburger.classList.remove("active");
+  menu.classList.remove("active");
+
+  updateMenuState();
+});
+
+// Close when clicking links
+document.querySelectorAll(".mobile-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    menu.classList.remove("active");
+
+    updateMenuState();
+  });
+});
 
 // Close when clicking overlay
 overlay.addEventListener("click", () => {

@@ -153,7 +153,7 @@ h6 {
 }
 
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
@@ -163,7 +163,6 @@ h6 {
 }
 
 .navbar.scrolled {
-  position: fixed;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
@@ -241,7 +240,7 @@ h6 {
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  z-index: 1001; /* keep above menu */
+  z-index: 1001;
 }
 
 .hamburger span {
@@ -286,7 +285,7 @@ h6 {
   flex-direction: column;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   padding-top: 3rem;
   width: 80%;
   height: 100dvh;
@@ -296,7 +295,7 @@ h6 {
   z-index: 998;
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   overscroll-behavior: contain;
 }
 
@@ -329,14 +328,6 @@ h6 {
 
 .mobile-menu .li-social-icons a {
   border-bottom: none;
-}
-
-body.menu-locked {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
 }
 
 .menu-overlay {
