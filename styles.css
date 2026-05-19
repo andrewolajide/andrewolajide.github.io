@@ -265,10 +265,15 @@ h6 {
 }
 
 .mobile-menu .close-menu {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   cursor: pointer;
+  color: white;
+  padding: 0;
 }
 
 .mobile-menu {
@@ -277,7 +282,7 @@ h6 {
   position: fixed;
   top: 0;
   right: 0;
-  padding-top: 3rem;
+  padding-top: 3.5rem;
   width: 80%;
   height: 100dvh;
   background: rgba(255, 255, 255, 0.06);
@@ -1274,7 +1279,9 @@ textarea {
 
 @media (max-width: 850px) {
   .hamburger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-right {
