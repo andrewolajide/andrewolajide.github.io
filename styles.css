@@ -334,6 +334,8 @@ h6 {
 body.menu-locked {
   overflow: hidden;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
 }
 
