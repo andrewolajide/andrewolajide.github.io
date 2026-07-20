@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Three09 Events",
     link: "http://three09events.com",
-    image: "images/three09 Events.png",
+    image: "images/three09-events.png",
     description:
       "A custom website developed for an event planning company, featuring immersive visuals, service showcases, event galleries, and a polished, responsive digital experience.",
   },
