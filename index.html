@@ -194,7 +194,7 @@
         <div class="aboutMeta">
           <p class="location">Benin City, Nigeria</p>
           <p>4+ years</p>
-          <p>Freelancer</p>
+          <p>Remote work</p>
         </div>
         <p>
           I'm a web developer and graphic designer based in Benin City, Nigeria,
@@ -361,72 +361,12 @@
         A showcase of diverse projects demonstrating technical expertise and
         creative problem-solving across various industries and platforms.
       </p>
-      <div class="projectRow">
-        <a
-          href="https://kvdpropertyinvestment.com/"
-          target="_blank"
-          rel="noopener"
-          class="projectBox card reveal reveal-up"
-        >
-          <img src="images/kvd.png" alt="Projects" class="projectPic" />
-          <div class="card-text">
-            <span class="stars"></span>
+      <div class="projectRow" id="projectRow"></div>
 
-            <h4>KVD Property Investment</h4>
-            <p>
-              A real estate platform combining a modern listing website with a
-              custom Property Management System, delivering seamless UX and
-              efficient backend control.
-              <strong>View live site</strong>
-            </p>
-          </div>
-        </a>
-        <a
-          href="http://golden-chidi.vercel.app/"
-          target="_blank"
-          rel="noopener"
-          class="projectBox card reveal reveal-up"
-        >
-          <img
-            src="images/Golden-chidi.png"
-            alt="Projects"
-            class="projectPic"
-          />
-          <div class="card-text">
-            <span class="stars"></span>
-
-            <h4>Golden Chidi - Realtor</h4>
-            <p>
-              A responsive real estate website for Golden Chidi, featuring
-              property listings and training programs. Developed as a portfolio
-              project.
-              <strong>View live site</strong>
-            </p>
-          </div>
-        </a>
-        <a
-          href="https://bright-future-academy-andrew.vercel.app/"
-          target="_blank"
-          rel="noopener"
-          class="projectBox card reveal reveal-up"
-        >
-          <img
-            src="images/bright-future.png"
-            alt="Projects"
-            class="projectPic"
-          />
-          <div class="card-text">
-            <span class="stars"></span>
-
-            <h4>Bright Future Academy</h4>
-            <p>
-              School website delivering smooth and informative user experience,
-              with a structured layout for showcasing academic programs,
-              admissions, and key school information.
-              <strong>View live site</strong>
-            </p>
-          </div>
-        </a>
+      <div class="viewMoreWrap">
+        <button type="button" id="viewMoreBtn" class="viewMoreBtn">
+          View More Projects
+        </button>
       </div>
     </section>
 
@@ -436,9 +376,8 @@
         Ready to start your project? Get in touch and let's discuss how I can
         help bring your vision to life
       </p>
-      <a href="#form-wrapper"
-        ><button>
-          Start a conversation<i class="fa-solid fa-arrow-right"></i></button
+      <a href="#form-wrapper" class="contact-button">
+        Start a conversation<i class="fa-solid fa-arrow-right"></i
       ></a>
       <div class="contact-wrapper">
         <div class="contact-info reveal reveal-left">
@@ -573,5 +512,6 @@
       </a>
     </div>
     <script src="script.js"></script>
+    <script src="project.js"></script>
   </body>
 </html>

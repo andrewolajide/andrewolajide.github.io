@@ -156,6 +156,8 @@ function initScrollAnimations() {
     });
   }, observerOptions);
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  window.revealObserver = observer;
 }
 initScrollToTop();
 initScrollAnimations();
